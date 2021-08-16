@@ -40,6 +40,7 @@ def find_day(arr, t=None, interv=None, sim=None, which='first'):
 
     New in version 2.1.2: arr can be a function with arguments interv and sim.
     '''
+
     if callable(arr):
         arr = arr(interv, sim)
         arr = sc.promotetoarray(arr)
@@ -55,30 +56,43 @@ def find_day(arr, t=None, interv=None, sim=None, which='first'):
         raise ValueError(errormsg)
     return inds
 
+'''
+Defines the Adapter function that allows interventions to access the analysis class
+'''
+            def __init__(self, label )
 
-def preprocess_day(day, sim):
-    '''
-    Preprocess a day: leave it as-is if it's a function, or try to convert it to
-    an integer if it's anything else.
-    '''
-    if callable(day): # If it's callable, leave it as-is
+
+    self.label = Adapter:
+
+Adapter = Intervention(analysis()):
+
+Adapter.Analyzer():
+
+
+
+    def preprocess_day(day, sim):
+        '''
+        Preprocess a day: leave it as-is if it's a function, or try to convert it to
+        an integer if it's anything else.
+        '''
+        if callable(day): # If it's callable, leave it as-is
         return day
-    else:
+        else:
         day = sim.day(day) # Otherwise, convert it to an int
     return day
 
 
-def get_day(day, interv=None, sim=None):
+    def get_day(day, interv=None, sim=None):
     '''
-    Return the day if it's an integer, or call it if it's a function.
+        Return the day if it's an integer, or call it if it's a function.
     '''
-    if callable(day):
+if callable(day):
         return day(interv, sim) # If it's callable, call it
     else:
         return day # Otherwise, leave it as-is
 
 
-def process_days(sim, days, return_dates=False):
+        def process_days(sim, days, return_dates=False):
     '''
     Ensure lists of days are in consistent format. Used by change_beta, clip_edges,
     and some analyzers. If day is 'end' or -1, use the final day of the simulation.
@@ -1627,4 +1641,3 @@ class vaccinate_num(BaseVaccination):
             self._scheduled_doses[sim.t+self.p['interval']].update(first_dose_inds)
 
         return np.concatenate([scheduled, first_dose_inds])
-
