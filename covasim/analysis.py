@@ -22,6 +22,18 @@ except ImportError as E: # pragma: no cover
 
 
 __all__ = ['Analyzer', 'snapshot', 'age_histogram', 'daily_age_stats', 'daily_stats', 'Fit', 'Calibration', 'TransTree']
+'''
+Create the adapter class that will actually implement the interface in intervention
+
+'''
+class Adapter():
+
+    def __init__(self,label=None):
+        self.Adapter = Adapter:
+
+    def request(self, label=None):
+
+
 
 
 class Analyzer(sc.prettyobj):
@@ -37,17 +49,17 @@ class Analyzer(sc.prettyobj):
         label (str): a label for the Analyzer (used for ease of identification)
     '''
 
-    def __init__(self, label=None):
-        if label is None:
-            label = self.__class__.__name__ # Use the class name if no label is supplied
-        self.label = label # e.g. "Record ages"
-        self.initialized = False
-        self.finalized = False
-        return
+            def __init__(self, label=None):
+                    if label is None:
+                        label = self.__class__.__name__ # Use the class name if no label is supplied
+                        self.label = label # e.g. "Record ages"
+                        self.initialized = False
+                        self.finalized = False
+                        return
 
-    def __call__(self, *args, **kwargs):
+        def __call__(self, *args, **kwargs):
         # Makes Analyzer(sim) equivalent to Analyzer.apply(sim)
-        if not self.initialized:
+            if not self.initialized:
             errormsg = f'Analyzer (label={self.label}, {type(self)}) has not been initialized'
             raise RuntimeError(errormsg)
         return self.apply(*args, **kwargs)
@@ -2011,4 +2023,3 @@ class TransTree(Analyzer):
 
 
         return fig
-
