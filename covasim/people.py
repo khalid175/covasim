@@ -207,6 +207,20 @@ class People(cvb.BasePeople):
 
     #%% Methods for updating state
 
+
+class ChangeStates(InternalState):
+	def __init__(self):
+		self.state = None
+
+	def getState(self):
+		return self.state
+
+	def setState(self, status):
+		self.state = status
+
+	def changeState(self):
+		self.state = self.state.changeState()
+
     def check_inds(self, current, date, filter_inds=None):
         ''' Return indices for which the current state is false and which meet the date criterion '''
         if filter_inds is None:
@@ -739,4 +753,3 @@ class People(cvb.BasePeople):
             else:
                 print(f'Nothing happened to {uid} during the simulation.')
         return
-
