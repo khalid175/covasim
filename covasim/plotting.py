@@ -688,7 +688,20 @@ def import_plotly():
         go = PlotlyImportFailed(E)
         return go
 
+class ChangeStates(InternalState):
+	def __init__(self):
+		self.state = None
 
+	def getState(self):
+		return self.state
+
+	def setState(self, status):
+		self.state = status
+
+	def changeState(self):
+		self.state = self.state.changeState()
+
+        
 def get_individual_states(sim):
     ''' Helper function to convert people into integers '''
 
